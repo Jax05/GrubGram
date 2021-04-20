@@ -1,3 +1,5 @@
+<h1>Sign Up</h1>
+
 <%= form_for(@user) do |f| %>
     <%= label_tag :username, 'Username:' %>
     <%= f.text_field :username %><br />
@@ -7,6 +9,6 @@
 
     <%= label_tag :password, "Password:" %>
     <%= f.password_field :password %><br />
-    
+
     <%= f.submit 'Sign Up' %>
 <% end %>
