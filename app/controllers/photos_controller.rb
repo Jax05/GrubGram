@@ -1,4 +1,7 @@
+require 'pry'
 class PhotosController < ApplicationController
+    before_action :redirect_if_not_logged_in, except: [:index, :show]
+
     def index
         @photos = Photo.all
     end
@@ -8,8 +11,8 @@ class PhotosController < ApplicationController
     end
 
     def create
-        @photo = Photo.new(photo_params)
-
+        @photo = current_user.photos.build(photo_params)
+    
         if @photo.save
             redirect_to photo_path(@photo)
         else
