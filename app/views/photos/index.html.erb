@@ -1,0 +1,11 @@
+<% if !@photos.empty? %>
+    <% @photos.each do |p| %>
+        <div>
+            <img src="<%= p.url %>">
+            <p><%= p.description %></p>
+            <p>Rating: <%= p.rating %></p>
+        </div>
+    <% end %>
+<% else %>
+    <h1>There are no photos</h1>
+<% end %>
