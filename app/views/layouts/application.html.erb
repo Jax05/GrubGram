@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="margin-top:20px">
     <% if logged_in? %>
       <%= link_to "Add Photo", new_photo_path %>
       <%= link_to "Log out", logout_path, method: "delete" %>
