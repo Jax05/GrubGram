@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   
-  resources :photos
   resources :users, except: [:new]
+  resources :restaurants
+  resources :photos
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
