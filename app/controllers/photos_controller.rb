@@ -8,11 +8,12 @@ class PhotosController < ApplicationController
 
     def new
         @photo = Photo.new
+        @photo.build_restaurant
     end
 
     def create
         @photo = current_user.photos.build(photo_params)
-    
+
         if @photo.save
             redirect_to photo_path(@photo)
         else
@@ -27,6 +28,6 @@ class PhotosController < ApplicationController
     private
 
     def photo_params
-        params.require(:photo).permit(:url, :description, :rating)
+        params.require(:photo).permit(:url, :description, :rating, restaurant_attributes: [:name, :logo])
     end
 end

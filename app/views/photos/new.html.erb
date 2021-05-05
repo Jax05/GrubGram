@@ -23,7 +23,7 @@
 
     <%= f.label :rating, "Rating" %>
     <%= f.number_field :rating, in: 1.0..5.0, step: 0.5, placeholder: "1-5" %><br />
-<!---
+
     <h2>Add a Restaurant</h2>
 
     <%= f.fields_for :restaurant do |r| %>
@@ -33,6 +33,6 @@
         <%= r.label :logo, "Logo Url" %>
         <%= r.text_field :logo %><br />
     <% end %>
---->
+    
     <%= f.submit 'Submit' %>
 <% end %>
