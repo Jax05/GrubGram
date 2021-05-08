@@ -1,2 +1,13 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<h1><%= @restaurant.name %></h1>
+
+<% if @restaurant.photos.empty? %>
+  <h2>This restaurant doesn't have any photos</h2>
+<% else %>
+  <div>
+    <% @restaurant.photos.each do |p| %>
+      <a href=<%= photo_path(p) %>>
+        <img src=<%= p.url %>>
+      </a>
+    <% end %>
+  </div>
+<% end %>

@@ -10,5 +10,6 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @restaurant = Restaurant.find_by(id: params[:id])
   end
 end
