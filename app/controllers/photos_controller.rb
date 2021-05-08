@@ -28,6 +28,6 @@ class PhotosController < ApplicationController
     private
 
     def photo_params
-        params.require(:photo).permit(:url, :description, :rating, restaurant_attributes: [:name, :logo])
+        params.require(:photo).permit(:url, :description, :rating, :restaurant_id, restaurant_attributes: [:name, :logo])
     end
 end
