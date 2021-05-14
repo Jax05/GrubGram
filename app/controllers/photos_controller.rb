@@ -3,7 +3,12 @@ class PhotosController < ApplicationController
     before_action :redirect_if_not_logged_in, except: [:index, :show]
 
     def index
-        @photos = Photo.all
+        if params[:restaurant_id]
+            @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+            @photos = @restaurant.photos
+        else
+            @photos = Photo.all
+        end
     end
 
     def new
