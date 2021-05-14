@@ -1,0 +1,9 @@
+<%= form_for @restaurant do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label :logo, "Logo", placeholder: "imgur.com/525GT01" %>
+  <%= f.text_field :logo %><br />
+
+  <%= f.submit 'Submit' %>
+<% end %>

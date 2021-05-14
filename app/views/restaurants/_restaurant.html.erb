@@ -1,0 +1,5 @@
+<% @restaurant.photos.each do |p| %>
+  <a href=<%= photo_path(p) %>>
+    <img src=<%= p.url %>>
+  </a>
+<% end %>
