@@ -13,6 +13,7 @@
   <body style="margin-top:20px">
     <% if logged_in? %>
       <%= link_to "Add Photo", new_photo_path %>
+      <%= link_to "Add Restaurant", new_restaurant_path %>
       <%= link_to "Log out", logout_path, method: "delete" %>
     <% else %>
       <%= link_to "Sign Up", signup_path %>
