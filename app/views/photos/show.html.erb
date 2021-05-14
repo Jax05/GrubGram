@@ -1,4 +1,1 @@
-<img src="<%= @photo.url %>" />
-<p><%= @photo.description %></p>
-<p>Rating: <%= @photo.rating %></p>
-<%= link_to @photo.restaurant.name, restaurant_path(@photo.restaurant) %>
+<%= render partial: 'photo' %>
