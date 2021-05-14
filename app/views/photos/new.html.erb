@@ -15,28 +15,30 @@
   <% end %>
 
 <%= form_for @photo do |f| %>
-    <%= f.label :url, "Url" %>
-    <%= f.text_field :url %><br />
+  <%= f.hidden_field :user_id, value: @current_user.id %>
 
-    <%= f.label :description, "Description" %>
-    <%= f.text_area :description %><br />
+  <%= f.label :url, "Url" %>
+  <%= f.text_field :url %><br />
 
-    <%= f.label :rating, "Rating" %>
-    <%= f.number_field :rating, in: 1.0..5.0, step: 0.5, placeholder: "1-5" %><br />
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %><br />
 
-    <%= f.label :restaurant, "Restaurant" %>
-    <%= f.collection_select(:restaurant_id, Restaurant.all, :id, :name, prompt: true) %><br />
+  <%= f.label :rating, "Rating" %>
+  <%= f.number_field :rating, in: 1.0..5.0, step: 0.5, placeholder: "1-5" %><br />
 
-    <h2>Add a Restaurant</h2>
-    <h3>Fill out fields if restaurant is not listed in the drop down</h3>
+  <%= f.label :restaurant, "Restaurant" %>
+  <%= f.collection_select(:restaurant_id, Restaurant.all, :id, :name, prompt: true) %><br />
 
-    <%= f.fields_for :restaurant do |r| %>
-      <%= r.label :name, "Name" %>
-      <%= r.text_field :name %><br />
+  <h2>Add a Restaurant</h2>
+  <h3>Fill out fields if restaurant is not listed in the drop down</h3>
 
-      <%= r.label :logo, "Logo Url" %>
-      <%= r.text_field :logo %><br />
-    <% end %>
-    
-    <%= f.submit 'Submit' %>
+  <%= f.fields_for :restaurant do |r| %>
+    <%= r.label :name, "Name" %>
+    <%= r.text_field :name %><br />
+
+    <%= r.label :logo, "Logo Url" %>
+    <%= r.text_field :logo %><br />
+  <% end %>
+  
+  <%= f.submit 'Submit' %>
 <% end %>
