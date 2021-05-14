@@ -7,14 +7,22 @@ class PhotosController < ApplicationController
     end
 
     def new
-        @photo = Photo.new
-        @photo.build_restaurant
+        if params[:restaurant_id]
+            @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+            @photo = @restaurant.photos.build
+        else
+            @photo = Photo.new
+            @photo.build_restaurant
+        end
     end
 
     def create
-        # @photo = current_user.photos.build(photo_params)
-
-        @photo = Photo.new(photo_params)
+        if params[:restaurant_id]
+            @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+            @photo = @restaurant.photos.build(photo_params)
+        else    
+            @photo = Photo.new(photo_params)
+        end
 
         if @photo.save
             redirect_to photo_path(@photo)

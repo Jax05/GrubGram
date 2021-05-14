@@ -26,18 +26,22 @@
   <%= f.label :rating, "Rating" %>
   <%= f.number_field :rating, in: 1.0..5.0, step: 0.5, placeholder: "1-5" %><br />
 
-  <%= f.label :restaurant, "Restaurant" %>
-  <%= f.collection_select(:restaurant_id, Restaurant.all, :id, :name, prompt: true) %><br />
+  <% if @restaurant %>
+    <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+  <% else %>
+    <%= f.label :restaurant, "Restaurant" %>
+    <%= f.collection_select(:restaurant_id, Restaurant.all, :id, :name, prompt: true) %><br />
 
-  <h2>Add a Restaurant</h2>
-  <h3>Fill out fields if restaurant is not listed in the drop down</h3>
+    <h2>Add a Restaurant</h2>
+    <h3>Fill out fields if restaurant is not listed in the drop down</h3>
 
-  <%= f.fields_for :restaurant do |r| %>
-    <%= r.label :name, "Name" %>
-    <%= r.text_field :name %><br />
+    <%= f.fields_for :restaurant do |r| %>
+      <%= r.label :name, "Name" %>
+      <%= r.text_field :name %><br />
 
-    <%= r.label :logo, "Logo Url" %>
-    <%= r.text_field :logo %><br />
+      <%= r.label :logo, "Logo Url" %>
+      <%= r.text_field :logo %><br />
+    <% end %>
   <% end %>
   
   <%= f.submit 'Submit' %>
