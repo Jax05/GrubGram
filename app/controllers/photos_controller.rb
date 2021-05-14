@@ -1,6 +1,7 @@
 require 'pry'
 class PhotosController < ApplicationController
     before_action :redirect_if_not_logged_in, except: [:index, :show]
+    before_action :get_photo, except: [:index, :new, :create]
 
     def index
         if params[:restaurant_id]
@@ -37,7 +38,6 @@ class PhotosController < ApplicationController
     end
 
     def show
-        @photo = Photo.find_by(id: params[:id])
     end
 
     private
@@ -47,5 +47,9 @@ class PhotosController < ApplicationController
 
     def photo_params
         params.require(:photo).permit(:url, :description, :rating, :user_id, :restaurant_id, restaurant_attributes: [:name, :logo])
+    end
+
+    def get_photo
+        @photo = Photo.find_by(id: params[:id])
     end
 end
