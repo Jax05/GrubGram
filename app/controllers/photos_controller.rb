@@ -40,6 +40,17 @@ class PhotosController < ApplicationController
     def show
     end
 
+    def edit
+    end
+
+    def update
+        if @photo.update(photo_params)
+            redirect_to photo_path(@photo)
+        else
+            render :edit
+        end
+    end
+
     private
 
     # We add user_id to strong params so it creates proper associations regardless of whether or not we're using
