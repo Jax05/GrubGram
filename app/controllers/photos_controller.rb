@@ -51,6 +51,11 @@ class PhotosController < ApplicationController
         end
     end
 
+    def destroy
+        @photo.destroy
+        redirect_to photos_path
+    end
+
     private
 
     # We add user_id to strong params so it creates proper associations regardless of whether or not we're using
