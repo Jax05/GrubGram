@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'photos#index'
+
   # custom route for signing up
   get '/signup', to: 'users#new'
 
