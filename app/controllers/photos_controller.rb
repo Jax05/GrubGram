@@ -26,8 +26,9 @@ class PhotosController < ApplicationController
         if params[:restaurant_id]
             @restaurant = Restaurant.find_by(id: params[:restaurant_id])
             @photo = @restaurant.photos.build(photo_params)
+            @photo.user = current_user
         else    
-            @photo = Photo.new(photo_params)
+            @photo = current_user.photos.build(photo_params)
         end
 
         if @photo.save
@@ -62,7 +63,7 @@ class PhotosController < ApplicationController
     # nested resources. It reduces the amount of code needed by including it here.
 
     def photo_params
-        params.require(:photo).permit(:url, :description, :rating, :user_id, :restaurant_id, restaurant_attributes: [:name, :logo])
+        params.require(:photo).permit(:url, :description, :rating, :restaurant_id, restaurant_attributes: [:name, :logo])
     end
 
     def get_photo

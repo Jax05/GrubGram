@@ -13,8 +13,6 @@
 <% end %>
 
 <%= form_for @photo do |f| %>
-  <%= f.hidden_field :user_id, value: @current_user.id %>
-
   <%= f.label :url, "Url" %>
   <%= f.text_field :url %><br />
 
