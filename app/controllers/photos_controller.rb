@@ -1,11 +1,9 @@
-require 'pry'
 class PhotosController < ApplicationController
     before_action :redirect_if_not_logged_in, except: [:index, :show]
     before_action :get_photo, except: [:index, :new, :create]
 
     def index
-        if params[:restaurant_id]
-            @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+        if restaurant_present_and_set
             @photos = @restaurant.photos
         else
             @photos = Photo.all
@@ -13,8 +11,7 @@ class PhotosController < ApplicationController
     end
 
     def new
-        if params[:restaurant_id]
-            @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+        if restaurant_present_and_set
             @photo = @restaurant.photos.build
         else
             @photo = Photo.new
@@ -23,8 +20,7 @@ class PhotosController < ApplicationController
     end
 
     def create
-        if params[:restaurant_id]
-            @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+        if restaurant_present_and_set
             @photo = @restaurant.photos.build(photo_params)
             @photo.user = current_user
         else    
@@ -59,9 +55,6 @@ class PhotosController < ApplicationController
 
     private
 
-    # We add user_id to strong params so it creates proper associations regardless of whether or not we're using
-    # nested resources. It reduces the amount of code needed by including it here.
-
     def photo_params
         params.require(:photo).permit(:url, :description, :rating, :restaurant_id, restaurant_attributes: [:name, :logo])
     end
@@ -69,4 +62,9 @@ class PhotosController < ApplicationController
     def get_photo
         @photo = Photo.find_by(id: params[:id])
     end
+
+    def restaurant_present_and_set
+        params[:restaurant_id] && @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+    end
+
 end
