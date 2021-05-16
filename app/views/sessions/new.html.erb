@@ -1,13 +1,5 @@
 <h1>Log In</h1>
 
-<%= form_for :user do |f| %>
-    <%= label_tag :email, "Email:" %>
-    <%= f.text_field :email %><br />
-
-    <%= label_tag :password, "Password:" %>
-    <%= f.password_field :password %><br />
-
-    <%= f.submit 'Log In' %>
-<% end %>
+<%= render partial: 'form' %>
 
 <%= link_to "or log in with Google", "/auth/google_oauth2", method: "post" %>
