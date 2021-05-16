@@ -1,4 +1,7 @@
 class Photo < ApplicationRecord
+  validates :url, presence: true, uniqueness: true
+  validates :rating, numericality: true
+
   belongs_to :user
   belongs_to :restaurant
 
