@@ -14,6 +14,6 @@
  *= require_self
  */
 
- div.profiler-button.profiler-totals {
-   display: none !important;
+ .navbar {
+   padding-top: 10px;
  }
