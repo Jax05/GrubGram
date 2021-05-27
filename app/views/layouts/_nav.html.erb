@@ -1,10 +1,20 @@
-<% if logged_in? %>
-  <%= link_to "Photos", photos_path %>
-  <%= link_to "Restaurants", restaurants_path %>
-  <%= link_to "Add Photo", new_photo_path %>
-  <%= link_to "Add Restaurant", new_restaurant_path %>
-  <%= link_to "Log out", logout_path, method: "delete" %>
-<% else %>
-  <%= link_to "Sign Up", signup_path %>
-  <%= link_to "Log In", login_path %>
-<% end %>
+<header class="navbar">
+  <section class="navbar-section">
+    <%= link_to "Photos", photos_path, class: "btn btn-link" %>
+    <%= link_to "Restaurants", restaurants_path, class: "btn btn-link" %>
+  </section>
+  <section class="navbar-center">
+    <!-- centered logo or brand -->
+    <%= link_to "GrubGram", root_path, class: "btn btn-link text-bold text-large" %>
+  </section>
+  <section class="navbar-section">
+    <% if logged_in? %>
+      <%= link_to "Add Photo", new_photo_path, class: "btn btn-link" %>
+      <%= link_to "Add Restaurant", new_restaurant_path, class: "btn btn-link" %>
+      <%= link_to "Log out", logout_path, method: "delete", class: "btn" %>
+    <% else %>
+      <%= link_to "Log In", login_path, class: "btn" %>
+      <%= link_to "Sign Up", signup_path, class: "btn btn-primary" %>
+    <% end %>
+  </section>
+</header>
