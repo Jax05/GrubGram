@@ -1,26 +1,24 @@
 <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@user.errors.count, "error") %> prohibited
-      this article from being saved:
-    </h2>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+  <div class="toast toast-error">
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
   </div>
 <% end %>
 
 <%= form_for(@user) do |f| %>
-    <%= f.label :username, 'Username' %>
-    <%= f.text_field :username %><br />
+  <div class="form-group">
+    <%= f.label :username, "Username", class: "form-label" %>
+    <%= f.text_field :username, class: "form-input" %>
 
-    <%= f.label :email, "Email" %>
-    <%= f.text_field :email %><br />
+    <%= f.label :email, "Email", class: "form-label" %>
+    <%= f.text_field :email, class: "form-input" %>
 
-    <%= f.label :password, "Password" %>
-    <%= f.password_field :password %><br />
+    <%= f.label :password, "Password", class: "form-label" %>
+    <%= f.password_field :password, class: "form-input" %><br>
 
-    <%= f.submit 'Sign Up' %>
+    <%= f.submit 'Sign Up', class: "btn btn-primary" %>
+  </div>
 <% end %>
