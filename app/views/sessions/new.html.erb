@@ -1,5 +1,9 @@
-<h1>Log In</h1>
-
-<%= render partial: 'form' %>
-
-<%= link_to "or log in with Google", "/auth/google_oauth2", method: "post" %>
+<div class="columns">
+  <div class="col-4 col-mx-auto">
+    <h3 class="text-left">Log In</h3>
+    <%= link_to "Don't have an account? Click to sign up.", signup_path %>
+    <%= render partial: 'form' %>
+    <div class="divider text-center" data-content="OR"></div>
+    <%= link_to "Continue with Google", "/auth/google_oauth2", method: "post", class: "btn" %>
+  </div>
+</div>
