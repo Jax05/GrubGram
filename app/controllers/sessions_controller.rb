@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     def destroy
         session.clear
-        redirect_to "/"
+        redirect_to login_path
     end
 
     def omniauth
