@@ -3,7 +3,7 @@
 <p>Rating: <%= @photo.rating %></p>
 <%= link_to @photo.restaurant.name, restaurant_path(@photo.restaurant) %>
 
-<% if current_user.photos.include?(@photo) %>
+<% if logged_in? && current_user.photos.include?(@photo) %>
   <%= link_to 'Edit Photo', edit_photo_path(@photo) %>
   <%= link_to "Delete Photo", photo_path(@photo), method: "delete" %>
 <% end %>
