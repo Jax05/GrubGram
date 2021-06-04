@@ -1,9 +1,21 @@
-<img src="<%= @photo.url %>" />
-<p><%= @photo.description %></p>
-<p>Rating: <%= @photo.rating %></p>
-<%= link_to @photo.restaurant.name, restaurant_path(@photo.restaurant) %>
-
-<% if logged_in? && current_user.photos.include?(@photo) %>
-  <%= link_to 'Edit Photo', edit_photo_path(@photo) %>
-  <%= link_to "Delete Photo", photo_path(@photo), method: "delete" %>
-<% end %>
+<div class="card column col-3 col-mx-auto">
+  <div class="card-image">
+    <img src=<%= @photo.url %> class="img-responsive">
+  </div>
+  <div class="card-header">
+    <div class="card-title h5"><%= link_to @photo.restaurant.name, restaurant_path(@photo.restaurant) %></div>
+    <div class="card-subtitle text-gray">
+    <p>Rating: <%= @photo.rating %></p>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><%= @photo.description %></p>
+  </div>
+  <div class="card-footer">
+    <%# User Actions %>
+    <% if logged_in? && current_user.photos.include?(@photo) %>
+      <%= link_to 'Edit', edit_photo_path(@photo), class: "btn btn-link" %>
+      <%= link_to "Delete", photo_path(@photo), method: "delete", class: "btn btn-link" %>
+    <% end %>
+  </div>
+</div>
