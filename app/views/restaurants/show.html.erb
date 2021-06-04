@@ -1,9 +1,3 @@
-<h1><%= @restaurant.name %></h1>
-
-<% if @restaurant.photos.empty? %>
-  <h2>This restaurant doesn't have any photos</h2>
-<% else %>
-  <div>
-    <%= render partial: 'restaurant' %>
-  </div>
-<% end %>
+<div class="columns">
+  <%= render partial: 'restaurant' %>
+</div>
