@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   resources :users, except: [:new]
   resources :photos
-  resources :restaurants do
+  resources :restaurants, only: [:new, :create, :show, :index] do
     resources :photos, only: [:new, :create, :index]
   end
 
