@@ -1,9 +1,9 @@
-<% if @restaurants.empty? %>
-  <h2>There are no restaurants to list</h2>
-<% else %>
-  <ul>
-    <% @restaurants.each do |r| %>
-      <li><%= link_to r.name, restaurant_path(r) %></li>
+<div class="columns">
+  <% if @restaurants.empty? %>
+    <h2>There are no restaurants to list</h2>
+  <% else %>
+    <% @restaurants.each do |restaurant| %>
+      <%= render partial: 'restaurants', :locals => { :restaurant => restaurant } %>
     <% end %>
-  </ul>
-<% end %>
+  <% end %>
+</div>

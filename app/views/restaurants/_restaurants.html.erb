@@ -1,0 +1,11 @@
+<div class="card column col-3">
+  <div class="card-image">
+    <img src=<%= restaurant.logo %> class="img-responsive">
+  </div>
+  <div class="card-header">
+    <div class="card-title h5"><%= link_to restaurant.name, restaurant_path(restaurant) %></div>
+  </div>
+  <div class="card-footer">
+    <%= link_to "View", restaurant_path(restaurant), class: "btn btn-primary" %>
+  </div>
+</div>
