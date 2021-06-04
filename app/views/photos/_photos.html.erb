@@ -1,0 +1,22 @@
+<div class="card column col-3">
+  <div class="card-image">
+    <img src=<%= photo.url %> class="img-responsive">
+  </div>
+  <div class="card-header">
+    <div class="card-title h5"><%= link_to photo.restaurant.name, restaurant_path(photo.restaurant) %></div>
+    <div class="card-subtitle text-gray">
+    <p>Rating: <%= photo.rating %></p>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><%= photo.description %></p>
+  </div>
+  <div class="card-footer">
+    <%= link_to "View", photo_path(photo), class: "btn btn-primary" %>
+    <%# User Actions %>
+    <% if logged_in? && current_user.photos.include?(photo) %>
+      <%= link_to 'Edit', edit_photo_path(photo), class: "btn btn-link" %>
+      <%= link_to "Delete", photo_path(photo), method: "delete", class: "btn btn-link" %>
+    <% end %>
+  </div>
+</div>
