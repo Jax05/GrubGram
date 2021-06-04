@@ -1,24 +1,7 @@
 <h1>Profile for <%= @user.username %></h1>
 
-<%# needs refactor %>
 <div class="columns">
   <% @user.photos.each do |photo| %>
-    <div class="card column col-3">
-      <div class="card-image">
-        <img src=<%= photo.url %> class="img-responsive">
-      </div>
-      <div class="card-header">
-        <div class="card-title h5"><%= link_to photo.restaurant.name, restaurant_path(photo.restaurant) %></div>
-        <div class="card-subtitle text-gray">
-        <p>Rating: <%= photo.rating %></p>
-        </div>
-      </div>
-      <div class="card-body">
-        <p><%= photo.description %></p>
-      </div>
-      <div class="card-footer">
-        <button class="btn btn-primary">...</button>
-      </div>
-    </div>
+    <%= render partial: 'photos/photos', :locals => { :photo => photo } %>
   <% end %>
 </div>
