@@ -1,9 +1,5 @@
 <% if @restaurant.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@restaurant.errors.count, "error") %> prohibited
-      this article from being saved:
-    </h2>
+  <div id="toast toast-error">
     <ul>
       <% @restaurant.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -13,11 +9,13 @@
 <% end %>
 
 <%= form_for @restaurant do |f| %>
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name %><br />
+  <div class="form-group">
+    <%= f.label :name, "Name", class: "form-label" %>
+    <%= f.text_field :name, class: "form-input" %><br />
 
-  <%= f.label :logo, "Logo", placeholder: "imgur.com/525GT01" %>
-  <%= f.text_field :logo %><br />
+    <%= f.label :logo, "Logo", class: "form-label" %>
+    <%= f.text_field :logo, placeholder: "imgur.com/G4295Olk", class: "form-input" %><br />
 
-  <%= f.submit 'Submit' %>
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
+  </div>
 <% end %>
