@@ -63,8 +63,4 @@ class PhotosController < ApplicationController
         @photo = Photo.find_by(id: params[:id])
     end
 
-    def restaurant_present_and_set
-        params[:restaurant_id] && @restaurant = Restaurant.find_by(id: params[:restaurant_id])
-    end
-
 end
