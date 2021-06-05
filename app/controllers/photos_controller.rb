@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
         if restaurant_present_and_set
             @photos = @restaurant.photos
         else
-            @photos = Photo.all
+            @photos = Photo.latest_photos
         end
     end
 

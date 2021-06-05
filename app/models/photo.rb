@@ -5,6 +5,8 @@ class Photo < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
 
+  scope :latest_photos, -> {order(created_at: :desc)}
+
   def restaurant_id=(restaurant_id)
     if restaurant_id
       self.restaurant = Restaurant.find_by(id: restaurant_id)
