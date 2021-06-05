@@ -9,6 +9,7 @@
   </section>
   <section class="navbar-section">
     <% if logged_in? %>
+      <%= link_to "Profile", user_path(current_user), class: "btn btn-link" %>
       <%= link_to "Add Photo", new_photo_path, class: "btn btn-link" %>
       <%= link_to "Add Restaurant", new_restaurant_path, class: "btn btn-link" %>
       <%= link_to "Log out", logout_path, method: "delete", class: "btn" %>
