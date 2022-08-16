@@ -12,4 +12,4 @@ You'll need to create an account if you want access to full app functionality. S
 
 ## Feel good about a bias free platform
 
-We created GrubGram to brige the gap between customers, restaurants, and third party delivery apps with the hopes of helping maintain high quality standards across the board. Feel free to get in touch if you'd like to help out and stay tuned for more features being released soon.
+We created GrubGram to bridge the gap between customers, restaurants, and third party delivery apps with the hopes of helping maintain high quality standards across the board. Feel free to get in touch if you'd like to help out and stay tuned for more features being released soon.
